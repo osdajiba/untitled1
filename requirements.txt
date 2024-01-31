@@ -1,0 +1,6 @@
+ccxt==4.2.21
+matplotlib==3.5.3
+numpy==1.23.1
+pandas==2.2.0
+pyodbc==5.0.1
+statsmodels==0.14.0
