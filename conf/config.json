@@ -1,0 +1,10 @@
+{
+  "proxies": {
+    "http": "127.0.0.1:7890"
+  },
+  "apiKey": "KeyeYxYsPNMBnCUWZ1jY9crTRIwci2MruXZkoBUJ5gW4VDju3owK9WNO95mrpWAw7W3",
+  "secret": "KeyeYxYsPNMBnCUWZ1jY9crTRIwci2MruXZkoBUJ5gW4VDju3owK9WNO95mrpWAw7W3",
+  "timeout": 3000,
+  "enableRateLimit": "False",
+  "headers" : {"Connection": "close"}
+}
