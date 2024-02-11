@@ -1,11 +1,16 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
-import lib.auto_order
-import lib.BN_market
-class auto_trade:
-    def __init__(self):
 
+import lib.BN_market
+
+
+class auto_trade:
+    def __init__(self, exchange):
+        self.exchange = exchange
 
     def core_func(self):
-        login_exchange()
+        self.login_exchange()
+
+    def login_exchange(self):
+        pass
