@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
-# Import necessary modules
 import logging
 import execution
 import Order
