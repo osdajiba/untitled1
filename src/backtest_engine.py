@@ -112,7 +112,7 @@ class BacktestEngine:
             # Initialize BacktestEngine with provided parameters
             self.data_source = data_resource.DataSource(self.data_path, self.start_date, self.end_date)
             self.strategy = stragety.Strategy(self.parameters)
-            self.performance = performance.Performance(self.initial_data)
+            self.performance = performance
             self.portfolio = portfolio.Portfolio(self.initial_cash_list, self.asset_name_list,
                                                  self.initial_position_list, self.asset_list, self.assets_data_list,
                                                  self.transaction_fee_list, self.slippage_list)
@@ -153,7 +153,7 @@ class BacktestEngine:
                 signals = self.strategy.generate_signals(bar)
                 trade_history = self.portfolio.handle_signals(signals, bar)
                 self.strategy.execute_trades(self.portfolio, trade_history)
-                self.performance.update_performance(self.portfolio)
+                metrics = self.get_performance_metrics()
 
             self.performance.generate_report()
             if display_result:
@@ -212,7 +212,7 @@ class BacktestEngine:
         plot_backtest_results(equity_curve, trade_signals, benchmark_returns, asset_prices)
 
         # Display additional metrics
-        metrics = self.performance.get_metrics()  # Assuming get_metrics returns a dictionary of metrics
+        metrics = self.performance.generate_report()  # Assuming get_metrics returns a dictionary of metrics
         display_additional_metrics(metrics)
 
     def save_results(self, file_name):
@@ -228,7 +228,7 @@ class BacktestEngine:
 
             # Save backtest results to files in the created subdirectory
             equity_curve = self.performance.get_equity_curve()
-            metrics = self.performance.get_metrics()
+            metrics = self.get_performance_metrics()
 
             equity_curve.to_csv(os.path.join(save_dir, 'equity_curve.csv'))
 
@@ -255,7 +255,7 @@ class BacktestEngine:
 
         :return: Dictionary containing various performance metrics.
         """
-        metrics = self.performance.get_metrics()
+        metrics = self.performance.update_performance()
         logging.info("Performance metrics retrieved.")
         return metrics
 

@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
-# Import necessary modules
 import logging
 import execution
 import Order
@@ -109,15 +108,11 @@ def notify_stakeholders(message):
 
 
 class Strategy:
-    def __init__(self, initial_cash_list=None, asset_name_list=N, initial_position_list=None,
-                 asset_list=None, assets_data_list=None,
-                 transaction_fee_list=None, slippage_list=None):
+    def __init__(self, asset_list=None, assets_data_list=None):
         # Initialize strategy parameters
         self.signals = []  # List to store trading signals
         self.trades = []  # List to store executed trades
-        self.portfolio = portfolio.Portfolio(initial_cash_list, asset_name_list, initial_position_list,
-                                             asset_list, assets_data_list,
-                                             transaction_fee_list, slippage_list)
+        self.portfolio = portfolio.Portfolio(asset_list, assets_data_list)
 
         # Set up logging
         logging.basicConfig(filename='strategy_log.txt', level=logging.INFO)
