@@ -6,7 +6,7 @@ import logging
 import execution
 import Order
 import portfolio
-from lib import factor_lib, strategies
+import strategies
 
 
 def get_trade_signals(conditions):
